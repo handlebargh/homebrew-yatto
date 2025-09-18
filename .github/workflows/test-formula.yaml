@@ -17,4 +17,4 @@ jobs:
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
       - name: Test formula
-        run: brew install --build-from-source Formula/myapp.rb
+        run: /home/linuxbrew/.linuxbrew/bin/brew install --build-from-source Formula/myapp.rb
