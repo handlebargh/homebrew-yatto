@@ -1,5 +1,5 @@
 ---
-name: Test Formula
+name: Test Formula Installation
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - name: Install Homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
-      - name: Test formula
+      - name: Install formula
         run: |
-          brew install --build-from-source ./Formula/yatto.rb
-          brew test ./Formula/yatto.rb
+          brew tap handlebargh/yatto
+          brew install yatto
