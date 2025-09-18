@@ -11,10 +11,13 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Install Homebrew
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        uses: Homebrew/actions/setup-homebrew@master
 
       - name: Test formula
-        run: /home/linuxbrew/.linuxbrew/bin/brew install --build-from-source Formula/yatto.rb
+        run: |
+          brew install --build-from-source ./Formula/yatto.rb
+          brew test ./Formula/yatto.rb
