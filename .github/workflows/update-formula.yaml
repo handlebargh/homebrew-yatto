@@ -22,38 +22,26 @@ jobs:
         id: release
         run: |
           TAG_NAME=${GITHUB_REF#refs/tags/}
-          VERSION=${TAG_NAME#v}
-          TARBALL_URL="https://github.com/handlebargh/yatto/archive/refs/tags/${TAG_NAME}.tar.gz"
-
+          VERSION=${TAG_NAME}
+          REVISION=$(git ls-remote https://github.com/handlebargh/yatto.git refs/tags/$TAG_NAME | cut -f1)
           echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
-          echo "tarball_url=${TARBALL_URL}" >> $GITHUB_OUTPUT
-
-      - name: Calculate new SHA256
-        id: sha
-        run: |
-          echo "Downloading and calculating SHA256 for ${{ steps.release.outputs.tarball_url }}"
-          SHA256=$(curl -sL "${{ steps.release.outputs.tarball_url }}" | sha256sum | cut -d' ' -f1)
-          echo "sha256=${SHA256}" >> $GITHUB_OUTPUT
-          echo "New SHA256: ${SHA256}"
+          echo "revision=${REVISION}" >> $GITHUB_OUTPUT
 
       - name: Update formula
         run: |
           FORMULA_FILE="Formula/yatto.rb"
 
-          sed -i'' -e "s|url \".*\"|url \"${{ steps.release.outputs.tarball_url }}\"|" $FORMULA_FILE
-          sed -i'' -e "s|sha256 \".*\"|sha256 \"${{ steps.sha.outputs.sha256 }}\"|" $FORMULA_FILE
-          sed -i'' -e "s|version \".*\"|version \"${{ steps.release.outputs.version }}\"|" $FORMULA_FILE
-          sed -i'' -e "s|-X main.version=v.*\"|-X main.version=v${{ steps.release.outputs.version }}\"), \"-o\", bin/\"yatto\"|" $FORMULA_FILE
+          sed -i'' -e "s|url \".*\"|url \"https://github.com/handlebargh/yatto.git\"|" $FORMULA_FILE
+          sed -i'' -e "s|tag: \".*\"|tag: \"${{ steps.release.outputs.tag_name }}\"|" $FORMULA_FILE
+          sed -i'' -e "s|revision: \".*\"|revision: \"${{ steps.release.outputs.revision }}\"|" $FORMULA_FILE
 
           echo "Formula updated with:"
-          echo "  Version: ${{ steps.release.outputs.version }}"
-          echo "  URL: ${{ steps.release.outputs.tarball_url }}"
-          echo "  SHA256: ${{ steps.sha.outputs.sha256 }}"
+          echo "  Tag: ${{ steps.release.outputs.tag_name }}"
+          echo "  Revision: ${{ steps.release.outputs.revision }}"
 
       - name: Test installation
         run: |
-          echo "Testing formula installation..."
           brew tap testing/yatto file://$(pwd)
           brew install --verbose testing/yatto/yatto
 
@@ -63,7 +51,6 @@ jobs:
 
       - name: Test basic functionality
         run: |
-          echo "Testing basic app functionality..."
           export PATH="$(brew --prefix)/bin:$PATH"
           yatto --version
 
@@ -82,9 +69,8 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update formula to ${{ steps.release.outputs.tag_name }}
-
-          - Updated version to ${{ steps.release.outputs.version }}
-          - Updated SHA256 to ${{ steps.sha.outputs.sha256 }}"
+          - Updated tag to ${{ steps.release.outputs.tag_name }}
+          - Updated revision to ${{ steps.release.outputs.revision }}"
             git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
             echo "Formula updated and pushed successfully!"
           fi
