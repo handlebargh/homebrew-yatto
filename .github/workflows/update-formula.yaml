@@ -44,7 +44,7 @@ jobs:
           sed -i'' -e "s|url \".*\"|url \"${{ steps.release.outputs.tarball_url }}\"|" $FORMULA_FILE
           sed -i'' -e "s|sha256 \".*\"|sha256 \"${{ steps.sha.outputs.sha256 }}\"|" $FORMULA_FILE
           sed -i'' -e "s|version \".*\"|version \"${{ steps.release.outputs.version }}\"|" $FORMULA_FILE
-          sed -i'' -e "s|-X main.version=v.*\"|-X main.version=v${{ steps.release.outputs.version }}\"), \"-o\", bin/\"yatto\"|" $FORMULA_FILE
+          sed -i'' -e "s|-X main.version=v.*\"|-X main.version=v${{ steps.release.outputs.version }}\"), \"-o\", /bin/\"yatto\"|" $FORMULA_FILE
 
           echo "Formula updated with:"
           echo "  Version: ${{ steps.release.outputs.version }}"
