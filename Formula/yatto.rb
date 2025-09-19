@@ -2,7 +2,7 @@ class Yatto < Formula
   desc "Terminal-based to-do application built with Bubble Tea"
   homepage "https://github.com/handlebargh/yatto"
   url "https://github.com/handlebargh/yatto.git",
-      tag:      "v0.15.0",
+      tag:      "v0.16.0",
       revision: "944df4399d638616b70d6b150f0138156cc4d978"
   license "MIT"
 
