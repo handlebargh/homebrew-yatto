@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -47,6 +44,7 @@ jobs:
           sed -i'' -e "s|url \".*\"|url \"${{ steps.release.outputs.tarball_url }}\"|" $FORMULA_FILE
           sed -i'' -e "s|sha256 \".*\"|sha256 \"${{ steps.sha.outputs.sha256 }}\"|" $FORMULA_FILE
           sed -i'' -e "s|version \".*\"|version \"${{ steps.release.outputs.version }}\"|" $FORMULA_FILE
+          sed -i'' -e "s|-X main.build=v.*\"|-X main.build=v${{ steps.release.outputs.version }}\"|" $FORMULA_FILE
 
           echo "Formula updated with:"
           echo "  Version: ${{ steps.release.outputs.version }}"
@@ -87,6 +85,6 @@ jobs:
 
           - Updated version to ${{ steps.release.outputs.version }}
           - Updated SHA256 to ${{ steps.sha.outputs.sha256 }}"
-            git push origin main
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
             echo "Formula updated and pushed successfully!"
           fi
