@@ -55,7 +55,7 @@ jobs:
       - name: Test installation
         run: |
           echo "Testing formula installation..."
-          brew tap handlebargh/yatto file://$GITHUB_WORKSPACE
+          brew tap handlebargh/yatto file://$(pwd)
           brew install --verbose yatto
 
       - name: Validate formula syntax
