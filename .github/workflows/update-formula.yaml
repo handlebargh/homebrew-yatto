@@ -9,6 +9,7 @@ on:
 jobs:
   update-and-test:
     runs-on: macos-latest
+    environment: release
     permissions:
       contents: write
     steps:
