@@ -43,9 +43,9 @@ jobs:
         run: |
           FORMULA_FILE="Formula/yatto.rb"
 
-          sed -i "s|url \".*\"|url \"${{ steps.release.outputs.tarball_url }}\"|" $FORMULA_FILE
-          sed -i "s|sha256 \".*\"|sha256 \"${{ steps.sha.outputs.sha256 }}\"|" $FORMULA_FILE
-          sed -i "s|version \".*\"|version \"${{ steps.release.outputs.version }}\"|" $FORMULA_FILE
+          sed -i'' -e "s|url \".*\"|url \"${{ steps.release.outputs.tarball_url }}\"|" $FORMULA_FILE
+          sed -i'' -e "s|sha256 \".*\"|sha256 \"${{ steps.sha.outputs.sha256 }}\"|" $FORMULA_FILE
+          sed -i'' -e "s|version \".*\"|version \"${{ steps.release.outputs.version }}\"|" $FORMULA_FILE
 
           echo "Formula updated with:"
           echo "  Version: ${{ steps.release.outputs.version }}"
