@@ -23,7 +23,7 @@ jobs:
         run: |
           TAG_NAME=${GITHUB_REF#refs/tags/}
           VERSION=${TAG_NAME#v}
-          TARBALL_URL="https://github.com/handlebargh/yatto/archive/${TAG_NAME}.tar.gz"
+          TARBALL_URL="https://github.com/handlebargh/yatto/archive/refs/tags/${TAG_NAME}.tar.gz"
 
           echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
