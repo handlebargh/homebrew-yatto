@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -65,6 +66,7 @@ jobs:
       - name: Test basic functionality
         run: |
           echo "Testing basic app functionality..."
+          export PATH="$(brew --prefix)/bin:$PATH"
           yatto --version
 
       - name: Clean up test installation
