@@ -9,7 +9,7 @@ class Yatto < Formula
 
   def install
     ENV["CGO_ENABLED"] = "0"
-    system "go", "build", *std_go_args(ldflags: "-s -w -X main.build=v0.15.0"
+    system "go", "build", *std_go_args(ldflags: "-s -w -X main.version=v0.15.0"
   end
 
   test do
