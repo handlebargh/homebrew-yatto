@@ -56,7 +56,7 @@ jobs:
         run: |
           echo "Testing formula installation..."
           brew tap testing/yatto file://$(pwd)
-          brew install --verbose yatto
+          brew install --verbose testing/yatto/yatto
 
       - name: Validate formula syntax
         run: |
