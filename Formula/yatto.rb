@@ -17,7 +17,7 @@ class Yatto < Formula
     output = shell_output("#{bin}/yatto -version")
     assert_match "Version:", output
     assert_match "yatto", output
-   
+
     # Test help output
     help_output = shell_output("#{bin}/yatto -help 2>&1", 1)
     assert_match "Usage of", help_output
