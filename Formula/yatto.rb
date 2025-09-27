@@ -3,7 +3,7 @@ class Yatto < Formula
   homepage "https://github.com/handlebargh/yatto"
   url "https://github.com/handlebargh/yatto.git",
       tag:      "v0.16.0",
-      revision: "944df4399d638616b70d6b150f0138156cc4d978"
+      revision: "566b2755ae64ed988b06659ca4891a11d850b092"
   license "MIT"
 
   depends_on "go" => :build
