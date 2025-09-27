@@ -1,5 +1,5 @@
 class Yatto < Formula
-  desc "Interactive VCS-based todo-list for the command line."
+  desc "Interactive VCS-based todo-list for the command-line"
   homepage "https://github.com/handlebargh/yatto"
   url "https://github.com/handlebargh/yatto.git",
       tag: "v0.16.0",
