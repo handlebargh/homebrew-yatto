@@ -1,5 +1,5 @@
 class Yatto < Formula
-  desc "Terminal-based to-do application built with Bubble Tea"
+  desc "Interactive VCS-based todo-list for the command line."
   homepage "https://github.com/handlebargh/yatto"
   url "https://github.com/handlebargh/yatto.git",
       tag: "v0.16.0",
