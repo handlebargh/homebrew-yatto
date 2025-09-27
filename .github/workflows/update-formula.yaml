@@ -14,7 +14,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -23,10 +23,8 @@ jobs:
         id: release
         run: |
           TAG_NAME=${GITHUB_REF#refs/tags/}
-          VERSION=${TAG_NAME}
           REVISION=$(git ls-remote https://github.com/handlebargh/yatto.git refs/tags/$TAG_NAME | cut -f1)
           echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "revision=${REVISION}" >> $GITHUB_OUTPUT
 
       - name: Update formula
