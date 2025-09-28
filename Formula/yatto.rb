@@ -11,7 +11,7 @@ class Yatto < Formula
   def install
     ENV["CGO_ENABLED"] = "0"
     ENV["GOFLAGS"] = "-mod=readonly -trimpath"
-    system "go", "build", *std_go_args(ldflags: "-s -w -extldflags=\"-zrelro -znow\"")
+    system "go", "build", *std_go_args(ldflags: "-s -w -extldflags=-zrelro -extldflags=-znow")
   end
 
   test do
