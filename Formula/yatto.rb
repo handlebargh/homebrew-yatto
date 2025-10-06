@@ -2,8 +2,8 @@ class Yatto < Formula
   desc "Interactive VCS-based todo-list for the command-line"
   homepage "https://github.com/handlebargh/yatto"
   url "https://github.com/handlebargh/yatto.git",
-      tag:      "v0.19.4",
-      revision: "20bc6627d66eb5aece0da184c20c0609fcb458b5"
+      tag:      "v0.20.0",
+      revision: "62ef18adcc1e957a160cca514ecae41a870be906"
   license "MIT"
 
   depends_on "go" => :build
