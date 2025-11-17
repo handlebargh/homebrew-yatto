@@ -5,21 +5,21 @@
 class Yatto < Formula
   desc "Interactive VCS-based todo-list for the command-line"
   homepage "https://github.com/handlebargh/yatto"
-  version "0.21.6"
+  version "0.21.7"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/handlebargh/yatto/releases/download/v0.21.6/yatto_0.21.6_darwin_amd64.tar.gz"
-      sha256 "da717765c1c03ee50d0245465481f238f84077430cc2016a825f69e139de4779"
+      url "https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto_0.21.7_darwin_amd64.tar.gz"
+      sha256 "f400d516028354596994f627913a8bb7abdb6e2bafca18e2c6e39a540280a5bc"
 
       def install
         bin.install "yatto"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/handlebargh/yatto/releases/download/v0.21.6/yatto_0.21.6_darwin_arm64.tar.gz"
-      sha256 "ae522882434a8369a979c8fe0271e37ca720316dd3d226f5dfbd8a36c2a8872a"
+      url "https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto_0.21.7_darwin_arm64.tar.gz"
+      sha256 "36c4ad3b2654815860032cc6300f9ccbefc5fea23bd8f4147d0d54bc1fd96d4b"
 
       def install
         bin.install "yatto"
@@ -29,15 +29,15 @@ class Yatto < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/handlebargh/yatto/releases/download/v0.21.6/yatto_0.21.6_linux_amd64.tar.gz"
-      sha256 "c19978a68538ec448736394e7b1eb2d889f2f74da5cecabae1d4b885b56744d3"
+      url "https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto_0.21.7_linux_amd64.tar.gz"
+      sha256 "96115bb8b41ee64797d4cbb8df87114a83a36e13672c5502fcd7e2346c2e3ee0"
       def install
         bin.install "yatto"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/handlebargh/yatto/releases/download/v0.21.6/yatto_0.21.6_linux_arm64.tar.gz"
-      sha256 "b099071be2e79cc3fd8dba0fcf5ebaf714dd1d83a709fd982ae7ab579480ed11"
+      url "https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto_0.21.7_linux_arm64.tar.gz"
+      sha256 "bed6b7e58c9b08b9570ba29aee177bc6a23881907455f49e5186a10bc1156dea"
       def install
         bin.install "yatto"
       end
