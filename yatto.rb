@@ -5,21 +5,21 @@
 class Yatto < Formula
   desc "Interactive version-controlled todo-list for the command-line"
   homepage "https://github.com/handlebargh/yatto"
-  version "1.1.2"
+  version "1.1.3"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/handlebargh/yatto/releases/download/v1.1.2/yatto_1.1.2_darwin_amd64.tar.gz"
-      sha256 "d8a66071a9158135ef2dad7473bacb701ffdf9eebaa3b269026337b59510605b"
+      url "https://github.com/handlebargh/yatto/releases/download/v1.1.3/yatto_1.1.3_darwin_amd64.tar.gz"
+      sha256 "a8c184442a6e1a099660e310079297bfca177540f4477591ed86716079d90619"
 
       define_method(:install) do
         bin.install "yatto"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/handlebargh/yatto/releases/download/v1.1.2/yatto_1.1.2_darwin_arm64.tar.gz"
-      sha256 "b10daeb9209b7b17635dfebb1f68356d51f21cf8bc0b51af0395e57950633513"
+      url "https://github.com/handlebargh/yatto/releases/download/v1.1.3/yatto_1.1.3_darwin_arm64.tar.gz"
+      sha256 "a3dab09cd7e038d758c2648726468e4a16b97f5f8a4b3b9dbfcf97156bcc251e"
 
       define_method(:install) do
         bin.install "yatto"
@@ -29,15 +29,15 @@ class Yatto < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/handlebargh/yatto/releases/download/v1.1.2/yatto_1.1.2_linux_amd64.tar.gz"
-      sha256 "9a15c019caaf05697d33718c240fc571674e981f6df8d548b0cd75339647b645"
+      url "https://github.com/handlebargh/yatto/releases/download/v1.1.3/yatto_1.1.3_linux_amd64.tar.gz"
+      sha256 "6e0e0ff80ba3699758806303e56dcdec9e0445cf6f8dc093f2f165e86869e379"
       define_method(:install) do
         bin.install "yatto"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/handlebargh/yatto/releases/download/v1.1.2/yatto_1.1.2_linux_arm64.tar.gz"
-      sha256 "972a245ba1bb651a71b27588c930b348773f192f667c36c207c4ab8463234b8e"
+      url "https://github.com/handlebargh/yatto/releases/download/v1.1.3/yatto_1.1.3_linux_arm64.tar.gz"
+      sha256 "742b4171588423c6938531e1f41f25f8d9dfa7f6dc0419641566a1201db05bea"
       define_method(:install) do
         bin.install "yatto"
       end
